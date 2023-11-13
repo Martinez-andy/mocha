@@ -1,0 +1,169 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block main %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawExpenseChart);
+  google.charts.setOnLoadCallback(drawBudgetChart);
+  google.charts.setOnLoadCallback(drawSampleExpense);
+  google.charts.setOnLoadCallback(drawSampleBudget);
+
+    {% if counter1 == 9 %}
+        document.addEventListener('DOMContentLoaded',function() {
+            document.getElementById('Expenses').id = 'Sample_Expenses'
+        });
+    {% endif %}
+
+    {% if counter2 == 9 %}
+        document.addEventListener('DOMContentLoaded',function() {
+            document.getElementById('Budget').id = 'Sample_Budget'
+        });
+    {% endif %}
+
+  function drawExpenseChart() {
+
+    var data1 = google.visualization.arrayToDataTable([
+        {% for key, value in data1.items() %}
+            {% if value is string %}
+                ['{{ key }}', '{{ value }}'],
+            {% else %}
+                ['{{ key }}', {{ value }}],
+            {% endif %}
+        {% endfor %}
+    ]);
+
+    var options = {
+      title: 'Expenses',
+      backgroundColor: '#EDB334',
+      pieSliceText: 'value'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('Expenses'));
+
+    chart.draw(data1, options);
+  }
+
+  function drawBudgetChart() {
+
+    var data2 = google.visualization.arrayToDataTable([
+        {% for key, value in data2.items() %}
+            {% if value is string %}
+                ['{{ key }}', '{{ value }}'],
+            {% else %}
+                ['{{ key }}', {{ value }}],
+            {% endif %}
+        {% endfor %}
+    ]);
+
+    var options = {
+    title: 'Budget',
+    backgroundColor: '#EDB334',
+    pieSliceText: 'value'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('Budget'));
+
+    chart.draw(data2, options);
+    }
+
+  function drawSampleExpense() {
+
+    var data3 = google.visualization.arrayToDataTable([
+        ['Category', 'Dollar Amounts'],
+        ['Dining',     11],
+        ['Groceries',      2],
+        ['Transport',  2],
+        ['Streaming', 2],
+        ['Rent',    7]
+    ]);
+
+    var options = {
+      title: 'Sample chart of expenses',
+      backgroundColor: '#EDB334'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('Sample_Expenses'));
+
+    chart.draw(data3, options);
+  }
+
+  function drawSampleBudget() {
+
+    var data4 = google.visualization.arrayToDataTable([
+        ['Category', 'Dollar Amounts'],
+        ['Dining',     11],
+        ['Groceries',      2],
+        ['Transport',  2],
+        ['Streaming', 2],
+        ['Rent',    7]
+    ]);
+
+    var options = {
+      title: 'Sample chart of budget',
+      backgroundColor: '#EDB334'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('Sample_Budget'));
+
+    chart.draw(data4, options);
+    }
+</script>
+
+<header>
+    <a href="/dash"> <img class="textlogo" src="static/TextLogo.png" alt="Mocha"> </a>
+    <ul>
+        <li> <a href="/add"> Add Expense</a> </li>
+        <li> <a href="/budget"> Edit Budget</a> </li>
+        <li> <a href="/logout"> Log out</a> </li>
+    </ul>
+</header>
+<div class="header">
+    <div id="Expenses" class="chart"></div>
+    <div id="Budget" class="chart"></div>
+<table class="table">
+    <thead>
+        {% if transactions|length > 0 %}
+            <tr>
+                <th scope="col">Transaction Number:</th>
+                <th scope="col">Category:</th>
+                <th scope="col">Amount Spent:</th>
+                <th scope="col">Date:</th>
+            </tr>
+        {% endif %}
+    </thead>
+    <tbody>
+        {% set count = namespace(value=1) %}
+        {% for element in transactions %}
+            <tr>
+                <td>{{ count.value }}</td>
+                <td>{{ element.category }}</td>
+                <td>{{ element.amount }}</td>
+                <td>{{ element.date }}</td>
+            </tr>
+            {% set count.value = count.value + 1  %}
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% if close|length > 0 %}
+        <script>
+            document.addEventListener('DOMContentLoaded',function() {
+                alert(
+                    {% for key, value in close.items() %}
+                    {% if value is string %}
+                        ['Add budget for {{ key }} you have spent: {{ value }} dollar(s)'],
+                    {% else %}
+                        ['{{ key }} expense to budget ratio is:', {{ value }}],
+                    {% endif %}
+                    {% endfor %})
+            });
+        </script>
+{% endif %}
+
+{% endblock %}

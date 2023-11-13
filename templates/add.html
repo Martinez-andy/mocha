@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Add Expense
+{% endblock %}
+
+{% block main %}
+<header>
+    <a href="/dash"> <img class="textlogo" src="static/TextLogo.png" alt="Mocha"> </a>
+    <ul>
+        <li> <a href="/add"> Add Expense</a> </li>
+        <li> <a href="/budget"> Edit Budget</a> </li>
+        <li> <a href="/logout"> Log out</a> </li>
+    </ul>
+</header>
+<div class="header">
+    <section class="signin">
+        <h1 class="text-centered gold-text">Add Expense!</h1>
+    </section>
+    <section class="form">
+        <form action="/add" method="post">
+            <div class="mb-3">
+                <select name="category" class="select" required>
+                    <option disabled selected>Symbol</option>
+                    {% for name in categories %}
+                <option>{{ name }}</option>
+                    {% endfor %}
+            </div>
+            <div class="mb-3">
+                <input class="form-control mx-auto w-auto" autofocus autocomplete="off" id="expense" name="expense" placeholder="Amount" type="text" required>
+            </div>
+            <div class="text-centered">
+                <button class="btn btn-primary centered" type="submit">Add Expense</button>
+            </div>
+        </form>
+    </section>
+</div>
+
+{% endblock %}

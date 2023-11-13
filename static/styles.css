@@ -1,0 +1,167 @@
+:root {
+    --main-brown: #24110C;
+    --main-gold: #EDB334;
+    --second-brown: #452016;
+}
+
+
+.header {
+    background-color: var(--main-brown);
+    height: 170vh;
+    z-index: -1;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+}
+
+.logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    top: 1rem;
+    position: sticky;
+    width: 45vw;
+}
+
+.gold-portion {
+    background-color: var(--main-gold);
+    height: 108vh;
+    padding: 3rem;
+    position: relative;
+    object-fit: cover;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.75vw 0vw 0vw 0vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li {
+    list-style: none;
+    margin-right: 1rem;
+}
+
+header ul li a {
+    text-decoration: none;
+    padding: 1vw;
+    color: var(--main-gold);
+    border-radius: 12rem;
+}
+
+header ul li a:hover {
+    background: var(--second-brown);
+    color: var(--main-gold);
+}
+
+.textlogo {
+    width: 8vw;
+    margin-left: 1vw;
+}
+
+.container {
+    background-color: var(--main-brown);
+    margin: 2rem;
+    padding: 2rem;
+    align-items: center;
+    height: 40vh;
+    border-radius: 20rem;
+}
+
+.container-child {
+    width: 50%;
+    float: left;
+}
+
+.text-centered {
+    text-align: center;
+}
+
+.smol {
+    width: 21vw;
+    margin: -4rem 10rem 5rem;
+}
+
+.secure {
+    width: 10vw;
+    margin: -4rem 10rem 5rem;
+}
+
+.gold-text {
+    color: var(--main-gold);
+}
+
+.container-text {
+    font-size: 1.5rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+.sign-in {
+    position: relative;
+    margin-top: 20vh;
+}
+
+.form {
+    background-color: var(--main-gold);
+    top: 15vh;
+    height: 40vh;
+    width: 30vw;
+    padding: 5rem;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    object-fit: cover;
+    border-radius: 4rem;
+}
+
+.signin {
+    background-color: var(--main-brown);
+    top: 15vh;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    object-fit: cover;
+    border-radius: 4rem;
+}
+
+body {
+    background-color: var(--main-brown)
+}
+
+.chart {
+    width: 50vw;
+    height: 70vh;
+    padding-top: 7vh;
+    float: left;
+    border-radius: 109rem;
+}
+
+.select {
+    display: block;
+    margin: 0 auto;
+    width: 15vw;
+    margin-bottom: 2rem;
+}
+
+td, tbody, tr {
+    background-color: var(--second-brown);
+    color: var(--main-gold);
+    width: 25vw;
+    border: 2px var(--main-gold)!important;
+}
