@@ -1,4 +1,4 @@
-# Mocha: Finance Done Better
+# Mocha: Smarter Budgeting with AI
 
 Welcome to Mocha! An all in one financial tool! Mocha is a web application that helps the user create budgets and track expenses. Mocha is smart enough to tell users when they exceed their budgets and even keeps track of the user's transactions using a MySQL data base. Feel free to use Mocha and get ready to experience finance done better!
 
